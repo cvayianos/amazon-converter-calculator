@@ -33,7 +33,7 @@
   <br>
   <label>
     Tax Rate (%):
-    <input type="number" id="tax" step="0.01">
+    <input type="number" id="tax" step="0.01" value="7.5">
   </label>
   <br>
   <button onclick="calculate()">Calculate</button>
@@ -52,7 +52,7 @@
 
       const taxed = cost * (1 + taxRate);
       const divided = taxed / 1.25;
-      const rounded = Math.round(divided * 100) / 100;
+      const rounded = Math.ceil(divided * 100) / 100;
 
       const resultsDiv = document.getElementById('results');
       resultsDiv.innerHTML = `

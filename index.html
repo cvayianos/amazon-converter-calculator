@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Tax Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 0.5em;
+      margin: 0.5em 0;
+    }
+    .results {
+      margin-top: 1em;
+      background: #fff;
+      padding: 1em;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sales Tax Calculator</h1>
+  <label>
+    Item Cost ($):
+    <input type="number" id="cost" step="0.01">
+  </label>
+  <br>
+  <label>
+    Tax Rate (%):
+    <input type="number" id="tax" step="0.01">
+  </label>
+  <br>
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="results" id="results" style="display:none;"></div>
+
+  <script>
+    function calculate() {
+      const cost = parseFloat(document.getElementById('cost').value);
+      const taxRate = parseFloat(document.getElementById('tax').value) / 100;
+
+      if (isNaN(cost) || isNaN(taxRate)) {
+        alert('Please enter valid numbers for both fields.');
+        return;
+      }
+
+      const taxed = cost * (1 + taxRate);
+      const divided = taxed / 1.25;
+      const rounded = Math.round(divided * 100) / 100;
+
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = `
+        <strong>Results:</strong><br>
+        Taxed Amount: $${taxed.toFixed(2)}<br>
+        After Dividing by 1.25: $${divided.toFixed(2)}<br>
+        Final Rounded Amount: <strong>$${rounded.toFixed(2)}</strong>
+      `;
+      resultsDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

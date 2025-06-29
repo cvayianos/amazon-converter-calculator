@@ -25,19 +25,20 @@
   </style>
 </head>
 <body>
-  <h1>Sales Tax Calculator</h1>
-  <label>
-    Item Cost ($):
-    <input type="number" id="cost" step="0.01">
-  </label>
-  <br>
-  <label>
-    Tax Rate (%):
-    <input type="number" id="tax" step="0.01" value="7.5">
-  </label>
-  <br>
-  <button onclick="calculate()">Calculate</button>
-
+  <form onsubmit="calculate(); return false;">
+    <h1>Sales Tax Calculator</h1>
+    <label>
+      Item Cost ($):
+      <input type="number" id="cost" step="0.01">
+    </label>
+    <br>
+    <label>
+      Tax Rate (%):
+      <input type="number" id="tax" step="0.01" value="7.5">
+    </label>
+    <br>
+    <button onclick="calculate()">Calculate</button>
+  </form>
   <div class="results" id="results" style="display:none;"></div>
 
   <script>
@@ -58,8 +59,8 @@
       resultsDiv.innerHTML = `
         <strong>Results:</strong><br>
         Taxed Amount: $${taxed.toFixed(2)}<br>
-        After Dividing by 1.25: $${divided.toFixed(2)}<br>
-        Final Rounded Amount: <strong>$${rounded.toFixed(2)}</strong>
+        Convert to K2K: $${divided.toFixed(2)}<br>
+        Final Rounded K2K Amount: <strong>$${rounded.toFixed(2)}</strong>
       `;
       resultsDiv.style.display = 'block';
     }
